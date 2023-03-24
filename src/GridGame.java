@@ -14,8 +14,11 @@ public class GridGame {
 
     public GridGame() {} // To be used by runner
 
-    public GridGame(int size) { // To be used by subclasses
-        grid = new Tile[size][size];
+    public GridGame(int size) { // To be used by subclasses with square grids
+        new GridGame(size,size);
+    }
+    public GridGame(int rows, int cols) { // To be used by subclasses with non-square grids
+        grid = new Tile[rows][cols];
         over=false;
     }
 
@@ -31,7 +34,7 @@ public class GridGame {
     public void play() { // Since no game defined, ask which game
         System.out.println("Games:");
         System.out.println(" 1 - Tic-Tac-Toe");
-        System.out.println(" 2 - Checkers");
+        System.out.println(" 2 - Connect Four");
         System.out.print("Select a game: ");
 
         String choice = SCAN.nextLine();
@@ -39,7 +42,7 @@ public class GridGame {
         if (choice.equals("1")) {
             game = new TicTacToe();
         } else {
-            game = new Checkers();
+            game = new ConnectFour();
         }
         game.play();
     }
@@ -50,21 +53,21 @@ public class GridGame {
     public void createTile(int r, int c, Tile t) {
         grid[r][c]=t;
     }
-    public void setTile(int r, int c, String player) {
-        grid[r][c].setValue(player);
+    public void setTile(int r, int c, String value) {
+        grid[r][c].setValue(value);
     }
 
     public boolean isTileEmpty(int r, int c) {
         return grid[r][c].isEmpty();
     }
 
-    public void moveTile(Tile t1, Tile t2) {
-        t2.setValue(t1.getValue());
-        t1.empty();
-    }
+//    public void moveTile(Tile t1, Tile t2) {
+//        t2.setValue(t1.getValue());
+//        t1.empty();
+//    }
 
     public String toString() {
-        return toString(false);
+        return toString(true);
     }
 
     public String toString(boolean indices) {
@@ -108,10 +111,6 @@ public class GridGame {
         if (indices) {board += "\n"+colIndices;}
 
         return board;
-    }
-
-    public void printLabelled() {
-        System.out.println(this.toString(true));
     }
 
     public int[] askForTile(String prompt) {

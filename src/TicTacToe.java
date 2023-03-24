@@ -13,7 +13,7 @@ public class TicTacToe extends GridGame {
 
     @Override
     public void play() {
-        printLabelled();
+        System.out.println(this); // Print board, with indices
         int[] cords = askForEmptyTile("Player " + player + ", enter your move!\n" +
                 "Enter in format x,y: ");
         int r=cords[0];

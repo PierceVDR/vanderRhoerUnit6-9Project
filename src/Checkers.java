@@ -21,7 +21,7 @@ public class Checkers extends GridGame {
                 createTile(r,c, new Tile(value));
             }
         }
-        printLabelled();
+        System.out.println(this);
     }
 
     private boolean isBlack(int r, int c) {
