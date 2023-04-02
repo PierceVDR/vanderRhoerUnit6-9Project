@@ -10,25 +10,22 @@ public class GridGame {
 
     private Tile[][] grid;
     private boolean over;
-    private String winner;
 
     public GridGame() {} // To be used by runner
 
     public GridGame(int size) { // To be used by subclasses with square grids
-        new GridGame(size,size);
+        grid = new Tile[size][size];
+        over=false;
     }
     public GridGame(int rows, int cols) { // To be used by subclasses with non-square grids
         grid = new Tile[rows][cols];
         over=false;
     }
 
-    // public void setGrid(Tile[][] grid) {this.grid=grid;}
     public void setOver(boolean over) {this.over=over;}
-    public void setWinner(String winner) {this.winner=winner;}
 
     public Tile[][] getGrid() {return grid;}
     public boolean isOver() {return over;}
-    public String getWinner() {return winner;}
 
 
     public void play() { // Since no game defined, ask which game
@@ -60,11 +57,6 @@ public class GridGame {
     public boolean isTileEmpty(int r, int c) {
         return grid[r][c].isEmpty();
     }
-
-//    public void moveTile(Tile t1, Tile t2) {
-//        t2.setValue(t1.getValue());
-//        t1.empty();
-//    }
 
     public String toString() {
         return toString(true);
@@ -132,7 +124,7 @@ public class GridGame {
 
     public int[] askForEmptyTile(String prompt) {
         while (true) {
-            int[] cords = new int[2];
+            int[] cords;
             cords = askForTile(prompt);
 
             if (isTileEmpty(cords[0],cords[1])) {

@@ -5,6 +5,8 @@ public class Letters {
      * If full-width characters weren't used, the tiles would be misaligned
      *
      * Copy-and-pasted from this website: http://xahlee.info/comp/unicode_full-width_chars.html
+     *
+     * Note: I didn't end up using some of the characters I added to this class
      */
 
     public static final String CROSS = "＋";

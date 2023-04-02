@@ -26,7 +26,7 @@ public class TicTacToe extends GridGame {
 
         if (isOver()) {
             System.out.println(this);
-            System.out.print("Game over!" );
+            System.out.println("Game over!" );
             if (winner!=null) {
                 System.out.println("Player " + winner + " has won!");
             } else {

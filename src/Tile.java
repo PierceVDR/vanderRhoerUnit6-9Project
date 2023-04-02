@@ -6,14 +6,9 @@ public class Tile extends GridGame {
         value = "";
     }
 
-    public Tile(String value) {this.value = value;}
-
     public void setValue(String value) {this.value = value;}
     public String getValue() {return value;}
 
-
-    public void empty() {
-        value ="";}
     public boolean isEmpty() {return value.equals("");}
 
     @Override
@@ -29,7 +24,7 @@ public class Tile extends GridGame {
     public boolean equals(Object obj) { // Two empty tiles will NOT be considered equal
         if (!(obj instanceof Tile)) {return false;}
 
-        return !isEmpty() && this.value==((Tile) obj).value;
+        return !isEmpty() && this.value.equals(((Tile) obj).value);
     }
 
 }

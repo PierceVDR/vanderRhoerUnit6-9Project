@@ -8,7 +8,7 @@ public class ConnectFour extends GridGame {
 
     private String player = "X";
     public ConnectFour() {
-        super(ROWS,COLS); // Will always have size of three
+        super(ROWS,COLS);
         for (int r=0; r<ROWS; r++) {
             for (int c=0; c<COLS; c++) {
                 createTile(r,c, new Tile());
@@ -23,7 +23,7 @@ public class ConnectFour extends GridGame {
                 "Enter a column # to deposit your piece into: ");
 
         int r=0;
-        while (!isTileEmpty(r,c)) {r++;} // Find row of tile to be filled
+        while (r+1<ROWS && isTileEmpty(r+1,c)) {r++;} // Find row of tile to be filled
 
         setTile(r,c,Letters.getLetter(player));
 
@@ -32,7 +32,7 @@ public class ConnectFour extends GridGame {
 
         if (isOver()) {
             System.out.println(this);
-            System.out.print("Game over!" );
+            System.out.println("Game over!" );
             if (winner!=null) {
                 System.out.println("Player " + winner + " has won!");
             } else {
@@ -115,22 +115,23 @@ public class ConnectFour extends GridGame {
         }
         checkR=r+1;
         checkC=c+1;
-        while (checkR<COLS) {
-            Tile checkT=getTile(checkR,checkR);
+        while (checkR<ROWS && checkC<COLS) {
+            Tile checkT=getTile(checkR,checkC);
             if (checkT.equals(t)) {
+                num++;
                 checkR++;
                 checkC++;
             } else {
                 break;
             }
         }
-        if (colSize>=CONNECT) {return true;}
+        if (num>=CONNECT) {return true;}
 
         // Check if it made a diagonal in the other direction:
         num=1;
         checkR=r+1;
         checkC=c-1;
-        while (checkR<COLS && checkC>=0) {
+        while (checkR<ROWS && checkC>=0) {
             Tile checkT=getTile(checkR,checkC);
             if (checkT.equals(t)) {
                 num++;
@@ -142,16 +143,17 @@ public class ConnectFour extends GridGame {
         }
         checkR=r-1;
         checkC=c+1;
-        while (checkR<COLS) {
-            Tile checkT=getTile(checkR,checkR);
+        while (checkR>0 && checkC<COLS) {
+            Tile checkT=getTile(checkR,checkC);
             if (checkT.equals(t)) {
+                num++;
                 checkR--;
                 checkC++;
             } else {
                 break;
             }
         }
-        if (colSize>=CONNECT) {return true;}
+        if (num>=CONNECT) {return true;}
 
         return false;
     }
