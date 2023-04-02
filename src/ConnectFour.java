@@ -189,52 +189,6 @@ public class ConnectFour extends GridGame {
         return null;
     }
 
-//    private boolean checkIfPlayerWon(String winner) {
-//        // Check for rows:
-//        for (Tile[] row : getGrid()) {
-//
-//            Tile lastT = null;
-//            int rowCount=0; // Count # of tiles with same value (not empty)
-//
-//            for (Tile t : row) {
-//                if (t.equals(lastT)) {
-//                    rowCount++;
-//                    if (rowCount>=CONNECT) {return true;}
-//                } else {
-//                    rowCount=0;
-//                }
-//                lastT=t;
-//            }
-//        }
-//
-//        // Check for columns:
-//        for (int c=0; c<COLS; c++) {
-//            Tile lastT = null;
-//            int colCount=0; // Count # of tiles with same value (not empty)
-//            for (int r=0; r<ROWS; r++) {
-//
-//                Tile t = getTile(r,c);
-//
-//                if (t.equals(lastT)) {
-//                    colCount++;
-//                    if (colCount>=CONNECT) {return true;}
-//                } else {
-//                    colCount=0;
-//                }
-//                lastT=t;
-//            }
-//        }
-//
-//        // Check for diagonals:
-//
-//    }
-
-//    @Override
-//    public String toString() {
-//        String txt = super.toString(false); // Use of super. is not actually necessary, but I've included it for clarity
-//        String colIndices =
-//    }
-
     private void swapPlayers() {
         if (player.equals("X")) {
             player="O";
