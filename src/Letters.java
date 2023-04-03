@@ -20,7 +20,8 @@ public class Letters {
     public static final String BLACK = "⬛";
     public static final String RED = "🔴";
 
-    // I used this page to get the colored text: https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/
+    // I used this page to get the colored text: https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/\
+    // But I never actually used it
     private static final String COLOR_RESET = "\u001B[0m";
     private static final String COLOR_WHITE = "\u001B[37m";
     private static final String COLOR_RED = "\u001B[31m";
